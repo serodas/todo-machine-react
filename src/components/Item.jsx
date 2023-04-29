@@ -1,12 +1,14 @@
 import React from 'react';
+import '../styles/Item.css';
 
 const Item = (props) => {
     return (
-        <li className="TodoItem">
+        <li className="Item">
+            👍
             <p
-            className='TodoItem-p'
+                className='Item-p'
             >
-            {props.text}
+                {props.text}
             </p>
             x
       </li>
