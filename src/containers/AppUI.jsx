@@ -9,9 +9,12 @@ import '../styles/AppUI.css';
 
 const AppUI = () => {
     const { state } = useContext(AppContext);
+    const totalItems = state.items.length;
+    const totalItemsCompleted = state.items.filter((item) => item.completed).length;
+    
     return (
        <main className='AppUI'>
-            <Counter />
+            <Counter totalItems={totalItems} totalItemsCompleted={totalItemsCompleted}/>
             <Search/>
             <List>
                 {state.itemsSearched.map(item => (

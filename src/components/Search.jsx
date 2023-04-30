@@ -19,7 +19,6 @@ const Search = () => {
         addState({
             ...state,
             itemsSearched: filterItems,
-            search: onSearchValue,
         });
     };
     return (
