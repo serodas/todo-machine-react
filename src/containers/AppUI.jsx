@@ -18,7 +18,7 @@ const AppUI = () => {
             <Search/>
             <List>
                 {state.itemsSearched.map(item => (
-                    <Item text={item.text} key={item.text}/>
+                    <Item text={item.text} completed={item.completed} key={item.text}/>
                 ))}
             </List>
 
