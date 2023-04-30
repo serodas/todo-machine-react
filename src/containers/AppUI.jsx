@@ -5,21 +5,22 @@ import Search from '../components/Search';
 import List from './List';
 import Item from '../components/Item';
 import AppContext from '../context/AppContext';
+import '../styles/AppUI.css';
 
 const AppUI = () => {
     const { state } = useContext(AppContext);
     return (
-       <>
+       <main className='AppUI'>
             <Counter />
             <Search/>
             <List>
-                {state.items.map(item => (
+                {state.itemsSearched.map(item => (
                     <Item text={item.text} key={item.text}/>
                 ))}
             </List>
 
             <CreateButton />
-       </> 
+       </main> 
     );
 }
 
