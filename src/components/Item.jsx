@@ -5,7 +5,7 @@ import '../styles/Item.css';
 const Item = (props) => {
     const { state, addState } = useContext(AppContext);
 
-    const toggleComplete = (text) => {
+    const toggleCompleteItem = (text) => {
         const newItems = [...state.items];
         const indexItem = state.items.findIndex((item) => item.text === text);
         newItems[indexItem].completed = !newItems[indexItem].completed;
@@ -15,10 +15,22 @@ const Item = (props) => {
             items: newItems,
         });
     };
+
+    const deleteItem = (text) => {
+        const items = [...state.items];
+        const indexItem = state.items.findIndex((item) => item.text === text);
+        items.splice(indexItem, 1);
+        addState({
+            ...state,
+            items: items,
+            itemsSearched: items,
+        });
+    };
+
     return (
         <li className="Item">
             <span
-                onClick={() => toggleComplete(props.text)}
+                onClick={() => toggleCompleteItem(props.text)}
             >
                 ✅
             </span>
@@ -27,7 +39,11 @@ const Item = (props) => {
             >
                 {props.text}
             </p>
-            <span>❌</span>
+            <span
+                onClick={() => deleteItem(props.text)}
+            >
+                ❌
+            </span>
       </li>
     );
 }

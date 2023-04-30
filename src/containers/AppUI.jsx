@@ -8,16 +8,33 @@ import AppContext from '../context/AppContext';
 import '../styles/AppUI.css';
 
 const AppUI = () => {
-    const { state } = useContext(AppContext);
+    const { state, addState } = useContext(AppContext);
     const totalItems = state.items.length;
     const totalItemsCompleted = state.items.filter((item) => item.completed).length;
-    
+
+    let filterItems = [];
+    if(state.searchValue.length === 0) {
+        filterItems = state.items;
+    } else {
+        filterItems = state.items.filter((item) => {
+            return item.text.toLowerCase().includes(state.searchValue.toLowerCase());
+        });
+    }
+
+    const onSearch = (event) => {
+        const onSearchValue = event.currentTarget.value;
+        addState({
+            ...state,
+            searchValue: onSearchValue,
+        });
+    };
+
     return (
        <main className='AppUI'>
             <Counter totalItems={totalItems} totalItemsCompleted={totalItemsCompleted}/>
-            <Search/>
+            <Search onSearch={onSearch}/>
             <List>
-                {state.itemsSearched.map(item => (
+                {filterItems.map(item => (
                     <Item text={item.text} completed={item.completed} key={item.text}/>
                 ))}
             </List>

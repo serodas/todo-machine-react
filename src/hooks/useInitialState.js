@@ -8,7 +8,7 @@ const todos = [
 
 const initialState = {
     items: todos,
-    itemsSearched: todos
+    searchValue: '',
 }
 
 const useInitialState = () => {
