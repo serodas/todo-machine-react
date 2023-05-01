@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
+import { FaCheck, FaRegWindowClose } from 'react-icons/fa';
 import '../styles/Item.css';
 
 const Item = (props) => {
@@ -24,7 +25,7 @@ const Item = (props) => {
             <span
                 onClick={() => toggleCompleteItem(props.text)}
             >
-                ✅
+                <FaCheck color={props.completed ? 'gray' : '#47c27a'} />
             </span>
             <p
                 className={`Item-p ${props.completed && 'Item-p--complete'}`}
@@ -34,7 +35,7 @@ const Item = (props) => {
             <span
                 onClick={() => deleteItem(props.text)}
             >
-                ❌
+                <FaRegWindowClose color="#f77"/>
             </span>
       </li>
     );
