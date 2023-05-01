@@ -11,6 +11,7 @@ import Empty from '../components/Empty';
 import List from '../containers/List';
 import Modal from '../containers/Modal';
 import '../styles/App.css';
+import EmptyResults from '../components/EmptyResults';
 
 function App() {
   const { 
@@ -45,13 +46,16 @@ function App() {
     <main className='App'>
             <Counter totalItems={totalItems} totalItemsCompleted={totalItemsCompleted}/>
             <Search onSearch={onSearch}/>
-            <List 
+            <List
+              searchValue={searchValue}
+              totalItems={totalItems} 
               error={error}
               loading={loading}
               filterItems={filterItems}
               onError={() => <ErrorItem />}
               onLoading={() => <Loading />}
               onEmpty={() => <Empty />}
+              onEmptyResults={(searchText) => <EmptyResults searchText={searchText} />}
               render={(item) => (
                 <Item 
                   items={items}
