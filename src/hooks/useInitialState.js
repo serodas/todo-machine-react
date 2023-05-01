@@ -9,6 +9,7 @@ import useLocalStorage from './useLocalStorage';
 
 const useInitialState = () => {
     const [searchValue, setSearchValue] = useState('');
+    const [openModal, setOpenModal] = useState(false);
 
     const {
         items,
@@ -23,7 +24,9 @@ const useInitialState = () => {
         loading,
         error,
         searchValue,
-        setSearchValue
+        setSearchValue,
+        openModal,
+        setOpenModal
     }
 }
 

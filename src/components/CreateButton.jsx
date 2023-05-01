@@ -1,9 +1,15 @@
 import React from 'react';
 import '../styles/CreateButton.css';
 
-const CreateButton = () => {
+const CreateButton = ({setOpenModal}) => {
+    const handleClick = () => {
+        setOpenModal(prevState => !prevState);
+    };
     return (
-        <button className="CreateButton">+</button>
+        <button 
+            className="CreateButton"
+            onClick={handleClick}
+        >+</button>
     );
 }
 

@@ -1,7 +1,11 @@
 .CreateButton {
-    background-color: #61DAFA;
-    box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
-    border: none;
+    background-color: rgb(0, 82, 103);
+    color: rgb(243, 243, 243);
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 0px 4px, rgba(0, 0, 0, 0.28) 0px 4px 8px;
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #054a5e;
     border-radius: 50%;
     cursor: pointer;
     font-size: 50px;
@@ -9,7 +13,6 @@
     bottom: 24px;
     right: 24px;
     font-weight: bold;
-    color: #FAFAFA;
     display: flex;
     justify-content: center;
     align-items: center;

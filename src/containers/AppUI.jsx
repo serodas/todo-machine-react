@@ -5,10 +5,12 @@ import Search from '../components/Search';
 import List from './List';
 import Item from '../components/Item';
 import AppContext from '../context/AppContext';
+import Modal from './Modal';
+import Form from '../components/Form';
 import '../styles/AppUI.css';
 
 const AppUI = () => {
-    const { items, loading, error, searchValue, setSearchValue } = useContext(AppContext);
+    const { items, loading, error, searchValue, setSearchValue, openModal, setOpenModal } = useContext(AppContext);
     const totalItems = items.length;
     const totalItemsCompleted = items.filter((item) => item.completed).length;
 
@@ -42,7 +44,14 @@ const AppUI = () => {
                 )}
             </List>
 
-            <CreateButton />
+            {openModal && (
+                <Modal>
+                    <Form />
+                </Modal> 
+            )}
+            <CreateButton 
+                setOpenModal={setOpenModal}
+            />
        </main> 
     );
 }
