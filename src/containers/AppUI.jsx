@@ -7,6 +7,9 @@ import Item from '../components/Item';
 import AppContext from '../context/AppContext';
 import Modal from './Modal';
 import Form from '../components/Form';
+import Loading from '../components/Loading';
+import ErrorItem from '../components/ErrorItem';
+import Empty from '../components/Empty';
 import '../styles/AppUI.css';
 
 const AppUI = () => {
@@ -33,15 +36,13 @@ const AppUI = () => {
             <Counter totalItems={totalItems} totalItemsCompleted={totalItemsCompleted}/>
             <Search onSearch={onSearch}/>
             <List>
-                {error && <p>Hubo un error</p> }
-                {loading && <p>cargando..</p>}
-                {(!loading && !filterItems.length) &&  <p>¡Crea tu primer TODO!</p>}
+                {error && <ErrorItem></ErrorItem> }
+                {loading && <Loading></Loading>}
+                {(!loading && !filterItems.length) && <Empty></Empty>}
 
-                {!loading && filterItems.length > 0 && ( 
-                    filterItems.map(item => (
-                        <Item text={item.text} completed={item.completed} key={item.text}/>
-                    ))
-                )}
+                {filterItems.map(item => (
+                    <Item text={item.text} completed={item.completed} key={item.text}/>
+                ))}
             </List>
 
             {openModal && (
