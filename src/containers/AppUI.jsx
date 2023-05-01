@@ -8,25 +8,22 @@ import AppContext from '../context/AppContext';
 import '../styles/AppUI.css';
 
 const AppUI = () => {
-    const { state, addState } = useContext(AppContext);
-    const totalItems = state.items.length;
-    const totalItemsCompleted = state.items.filter((item) => item.completed).length;
+    const { items, loading, error, searchValue, setSearchValue } = useContext(AppContext);
+    const totalItems = items.length;
+    const totalItemsCompleted = items.filter((item) => item.completed).length;
 
     let filterItems = [];
-    if(state.searchValue.length === 0) {
-        filterItems = state.items;
+    if(searchValue.length === 0) {
+        filterItems = items;
     } else {
-        filterItems = state.items.filter((item) => {
-            return item.text.toLowerCase().includes(state.searchValue.toLowerCase());
+        filterItems = items.filter((item) => {
+            return item.text.toLowerCase().includes(searchValue.toLowerCase());
         });
     }
 
     const onSearch = (event) => {
         const onSearchValue = event.currentTarget.value;
-        addState({
-            ...state,
-            searchValue: onSearchValue,
-        });
+        setSearchValue(onSearchValue);
     };
 
     return (
@@ -34,9 +31,15 @@ const AppUI = () => {
             <Counter totalItems={totalItems} totalItemsCompleted={totalItemsCompleted}/>
             <Search onSearch={onSearch}/>
             <List>
-                {filterItems.map(item => (
-                    <Item text={item.text} completed={item.completed} key={item.text}/>
-                ))}
+                {error && <p>Hubo un error</p> }
+                {loading && <p>cargando..</p>}
+                {(!loading && !filterItems.length) &&  <p>¡Crea tu primer TODO!</p>}
+
+                {!loading && filterItems.length > 0 && ( 
+                    filterItems.map(item => (
+                        <Item text={item.text} completed={item.completed} key={item.text}/>
+                    ))
+                )}
             </List>
 
             <CreateButton />

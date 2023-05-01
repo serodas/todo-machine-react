@@ -3,28 +3,20 @@ import AppContext from '../context/AppContext';
 import '../styles/Item.css';
 
 const Item = (props) => {
-    const { state, addState } = useContext(AppContext);
+    const { items, saveItemsLocalStorage } = useContext(AppContext);
 
     const toggleCompleteItem = (text) => {
-        const newItems = [...state.items];
-        const indexItem = state.items.findIndex((item) => item.text === text);
+        const newItems = [...items];
+        const indexItem = newItems.findIndex((item) => item.text === text);
         newItems[indexItem].completed = !newItems[indexItem].completed;
-
-        addState({
-            ...state,
-            items: newItems,
-        });
+        saveItemsLocalStorage(newItems);
     };
 
     const deleteItem = (text) => {
-        const items = [...state.items];
-        const indexItem = state.items.findIndex((item) => item.text === text);
-        items.splice(indexItem, 1);
-        addState({
-            ...state,
-            items: items,
-            itemsSearched: items,
-        });
+        const cloneItems = [...items];
+        const indexItem = cloneItems.findIndex((item) => item.text === text);
+        cloneItems.splice(indexItem, 1);
+        saveItemsLocalStorage(cloneItems);
     };
 
     return (

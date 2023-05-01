@@ -1,26 +1,29 @@
 import { useState } from 'react';
+import useLocalStorage from './useLocalStorage';
 
-const todos = [
-    { text: 'Leer un libro', completed: false },
-    { text: 'Bañar al perro', completed: false },
-    { text: 'Ver una pelicula', completed: true }
-];
-
-const initialState = {
-    items: todos,
-    searchValue: '',
-}
+// const todos = [
+//     { text: 'Leer un libro', completed: false },
+//     { text: 'Bañar al perro', completed: false },
+//     { text: 'Ver una pelicula', completed: true }
+// ];
 
 const useInitialState = () => {
-    const [state, setState] = useState(initialState);
+    const [searchValue, setSearchValue] = useState('');
 
-    const addState = (payload) => {
-        setState(payload);
-    };
-    
+    const {
+        items,
+        saveItemsLocalStorage,
+        loading,
+        error
+    } = useLocalStorage('ITEMS', []);
+
     return {
-        state,
-        addState,
+        items,
+        saveItemsLocalStorage,
+        loading,
+        error,
+        searchValue,
+        setSearchValue
     }
 }
 
