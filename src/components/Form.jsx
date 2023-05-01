@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import '../styles/Form.css';
-import AppContext from '../context/AppContext';
 
-const Form = () => {
+const Form = ({ items, saveItemsLocalStorage, setOpenModal }) => {
     const [ newItemValue, setNewItemValue] = React.useState('');
-
-    const { items, saveItemsLocalStorage, setOpenModal } = useContext(AppContext);
 
     const onSubmit = (event) => {
         event.preventDefault();

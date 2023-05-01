@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
-import AppContext from '../context/AppContext';
+import React from 'react';
 import { FaCheck, FaRegWindowClose } from 'react-icons/fa';
 import '../styles/Item.css';
 
-const Item = (props) => {
-    const { items, saveItemsLocalStorage } = useContext(AppContext);
+const Item = ({items, saveItemsLocalStorage, text, completed }) => {
 
     const toggleCompleteItem = (text) => {
         const newItems = [...items];
@@ -23,17 +21,17 @@ const Item = (props) => {
     return (
         <li className="Item">
             <span
-                onClick={() => toggleCompleteItem(props.text)}
+                onClick={() => toggleCompleteItem(text)}
             >
-                <FaCheck color={props.completed ? 'gray' : '#47c27a'} />
+                <FaCheck color={completed ? 'gray' : '#47c27a'} />
             </span>
             <p
-                className={`Item-p ${props.completed && 'Item-p--complete'}`}
+                className={`Item-p ${completed && 'Item-p--complete'}`}
             >
-                {props.text}
+                {text}
             </p>
             <span
-                onClick={() => deleteItem(props.text)}
+                onClick={() => deleteItem(text)}
             >
                 <FaRegWindowClose color="#f77"/>
             </span>
