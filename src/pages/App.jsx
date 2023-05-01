@@ -45,22 +45,23 @@ function App() {
     <main className='App'>
             <Counter totalItems={totalItems} totalItemsCompleted={totalItemsCompleted}/>
             <Search onSearch={onSearch}/>
-            <List>
-                {error && <ErrorItem></ErrorItem> }
-                {loading && <Loading></Loading>}
-                {(!loading && !filterItems.length) && <Empty></Empty>}
-
-                {filterItems.map(item => (
-                    <Item
-                      items={items}
-                      saveItemsLocalStorage={saveItemsLocalStorage}
-                      text={item.text} 
-                      completed={item.completed} 
-                      key={item.text}
-                    />
-                ))}
-            </List>
-
+            <List 
+              error={error}
+              loading={loading}
+              filterItems={filterItems}
+              onError={() => <ErrorItem />}
+              onLoading={() => <Loading />}
+              onEmpty={() => <Empty />}
+              render={(item) => (
+                <Item 
+                  items={items}
+                  saveItemsLocalStorage={saveItemsLocalStorage}
+                  text={item.text} 
+                  completed={item.completed} 
+                  key={item.text}
+                />
+              )}
+            />
             {openModal && (
                 <Modal>
                     <Form 
