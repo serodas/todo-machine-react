@@ -10,9 +10,10 @@ import ErrorItem from '../components/ErrorItem';
 import Empty from '../components/Empty';
 import List from '../containers/List';
 import Modal from '../containers/Modal';
-import '../styles/App.css';
 import EmptyResults from '../components/EmptyResults';
 import Header from '../containers/Header';
+import { ChangeAlert } from '../components/ChangeAlert';
+import '../styles/App.css';
 
 function App() {
   const { 
@@ -24,6 +25,7 @@ function App() {
     setOpenModal,
     error,
     loading,
+    sincronizeItemsLocalStorage,
    } = useInitialState();
 
   const totalItems = items.length;
@@ -85,6 +87,9 @@ function App() {
             )}
             <CreateButton 
                 setOpenModal={setOpenModal}
+            />
+            <ChangeAlert
+              sincronize={sincronizeItemsLocalStorage}
             />
        </main> 
   );

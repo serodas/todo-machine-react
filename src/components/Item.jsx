@@ -23,7 +23,7 @@ const Item = ({items, saveItemsLocalStorage, text, completed }) => {
             <span
                 onClick={() => toggleCompleteItem(text)}
             >
-                <FaCheck color={completed ? 'gray' : '#47c27a'} />
+                <FaCheck color={completed ? '#47c27a' : 'gray'} />
             </span>
             <p
                 className={`Item-p ${completed && 'Item-p--complete'}`}
@@ -33,7 +33,7 @@ const Item = ({items, saveItemsLocalStorage, text, completed }) => {
             <span
                 onClick={() => deleteItem(text)}
             >
-                <FaRegWindowClose color="#f77"/>
+                <FaRegWindowClose color={completed ? '#f77' : 'gray'}/>
             </span>
       </li>
     );

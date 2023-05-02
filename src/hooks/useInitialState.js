@@ -15,7 +15,8 @@ const useInitialState = () => {
         items,
         saveItemsLocalStorage,
         loading,
-        error
+        error,
+        sincronizeItemsLocalStorage,
     } = useLocalStorage('ITEMS', []);
 
     return {
@@ -26,7 +27,8 @@ const useInitialState = () => {
         searchValue,
         setSearchValue,
         openModal,
-        setOpenModal
+        setOpenModal,
+        sincronizeItemsLocalStorage,
     }
 }
 

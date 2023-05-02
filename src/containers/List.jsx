@@ -9,7 +9,7 @@ const List = (props) => {
             {(!props.loading && !props.totalItems ) && props.onEmpty()}
             {(props.totalItems > 0 && !props.filterItems.length) && props.onEmptyResults(props.searchValue)}
             <ul>
-                {props.filterItems.map(props.render)}
+                {(!props.loading && !props.error) && props.filterItems.map(props.render)}
             </ul>
       </section>
     );
