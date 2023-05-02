@@ -1,9 +1,11 @@
 import React from 'react';
 import '../styles/Counter.css';
 
-const Counter = ({totalItems, totalItemsCompleted}) => {
+const Counter = ({totalItems, totalItemsCompleted, loading}) => {
     return (
-        <h2 className="Counter">Has completado {totalItemsCompleted} de {totalItems} TODOs</h2>
+        <h2 className={`Counter ${loading ? 'Counter--loading' : ''}`}>
+            Has completado {totalItemsCompleted} de {totalItems} TODOs
+        </h2>
     );
 }
 

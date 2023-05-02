@@ -22,3 +22,7 @@
 .Search:focus {
     outline-color: #0093d3;
 }
+
+.Search:disabled {
+    opacity: 0.5;
+}

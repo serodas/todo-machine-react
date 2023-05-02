@@ -13,15 +13,15 @@
     margin: 24px 0 24px 24px;
     width: calc(100% - 120px);
     font-size: 18px;
-    line-height: 21px;
+    line-height: 24px;
     font-weight: 400;
     background-color: #002e39;
 }
 
 .Loading__icon--complete,
 .Loading__icon--delete {
-    height: 21px;
-    width: 21px;
+    height: 24px;
+    width: 24px;
     background-color: #002e39;
 }
 

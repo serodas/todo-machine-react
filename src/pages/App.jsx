@@ -12,6 +12,7 @@ import List from '../containers/List';
 import Modal from '../containers/Modal';
 import '../styles/App.css';
 import EmptyResults from '../components/EmptyResults';
+import Header from '../containers/Header';
 
 function App() {
   const { 
@@ -44,8 +45,15 @@ function App() {
 
   return (
     <main className='App'>
-            <Counter totalItems={totalItems} totalItemsCompleted={totalItemsCompleted}/>
-            <Search onSearch={onSearch}/>
+            <Header loading={loading}>
+              <Counter 
+                totalItems={totalItems} 
+                totalItemsCompleted={totalItemsCompleted}
+              />
+              <Search 
+                onSearch={onSearch}
+              />
+            </Header>
             <List
               searchValue={searchValue}
               totalItems={totalItems} 
