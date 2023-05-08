@@ -2,7 +2,7 @@ import { useEffect, useReducer } from 'react';
 
 const initialState = ({ initialValue }) => ({
     items: initialValue,
-    loading: false,
+    loading: true,
     error: false,
     sincronizedItems: true,
 });
