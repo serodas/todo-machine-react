@@ -8,7 +8,9 @@ const Form = ({ items, saveItemsLocalStorage, setOpenModal }) => {
         event.preventDefault();
         const newItems = [...items];
         newItems.push({
+            id: Date.now().toString(16),
             text: newItemValue,
+            completed: false,
         });
         saveItemsLocalStorage(newItems);
         setOpenModal(false);

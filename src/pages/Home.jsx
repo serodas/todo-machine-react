@@ -70,9 +70,10 @@ const Home = () => {
                 <Item 
                   items={items}
                   saveItemsLocalStorage={saveItemsLocalStorage}
+                  id={item.id}
                   text={item.text} 
                   completed={item.completed} 
-                  key={item.text}
+                  key={item.id}
                 />
               )}
             />

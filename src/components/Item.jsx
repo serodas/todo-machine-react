@@ -2,30 +2,30 @@ import React from 'react';
 import { FaCheck, FaRegWindowClose, FaRegEdit } from 'react-icons/fa';
 import '../styles/Item.css';
 
-const Item = ({items, saveItemsLocalStorage, text, completed }) => {
+const Item = ({items, saveItemsLocalStorage, id, text, completed }) => {
 
-    const toggleCompleteItem = (text) => {
+    const toggleCompleteItem = (id) => {
         const newItems = [...items];
-        const indexItem = newItems.findIndex((item) => item.text === text);
+        const indexItem = newItems.findIndex((item) => item.id === id);
         newItems[indexItem].completed = !newItems[indexItem].completed;
         saveItemsLocalStorage(newItems);
     };
 
-    const deleteItem = (text) => {
+    const deleteItem = (id) => {
         const cloneItems = [...items];
-        const indexItem = cloneItems.findIndex((item) => item.text === text);
+        const indexItem = cloneItems.findIndex((item) => item.id === id);
         cloneItems.splice(indexItem, 1);
         saveItemsLocalStorage(cloneItems);
     };
 
-    const editItem = (text) => {
-        console.log('editItem', text);
+    const editItem = (id) => {
+        console.log('editItem', id);
     };
 
     return (
         <li className="Item">
             <span
-                onClick={() => toggleCompleteItem(text)}
+                onClick={() => toggleCompleteItem(id)}
             >
                 <FaCheck color={completed ? '#47c27a' : ''} className='icon--completed' />
             </span>
@@ -35,12 +35,12 @@ const Item = ({items, saveItemsLocalStorage, text, completed }) => {
                 {text}
             </p>
             <span
-                onClick={() => editItem(text)}
+                onClick={() => editItem(id)}
             >
                 <FaRegEdit className='icon--edit' />
             </span>
             <span
-                onClick={() => deleteItem(text)}
+                onClick={() => deleteItem(id)}
                 style={{ marginLeft: '10px' }}
             >
                 <FaRegWindowClose className='icon--delete'/>
