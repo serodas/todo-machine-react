@@ -15,7 +15,7 @@ import Header from '../containers/Header';
 import { ChangeAlert } from '../components/ChangeAlert';
 import '../styles/App.css';
 
-function App() {
+const Home = () => {
   const { 
     items, 
     saveItemsLocalStorage,
@@ -95,4 +95,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
