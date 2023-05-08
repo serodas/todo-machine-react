@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCheck, FaRegWindowClose } from 'react-icons/fa';
+import { FaCheck, FaRegWindowClose, FaRegEdit } from 'react-icons/fa';
 import '../styles/Item.css';
 
 const Item = ({items, saveItemsLocalStorage, text, completed }) => {
@@ -18,12 +18,16 @@ const Item = ({items, saveItemsLocalStorage, text, completed }) => {
         saveItemsLocalStorage(cloneItems);
     };
 
+    const editItem = (text) => {
+        console.log('editItem', text);
+    };
+
     return (
         <li className="Item">
             <span
                 onClick={() => toggleCompleteItem(text)}
             >
-                <FaCheck color={completed ? '#47c27a' : 'gray'} />
+                <FaCheck color={completed ? '#47c27a' : ''} className='icon--completed' />
             </span>
             <p
                 className={`Item-p ${completed && 'Item-p--complete'}`}
@@ -31,9 +35,15 @@ const Item = ({items, saveItemsLocalStorage, text, completed }) => {
                 {text}
             </p>
             <span
-                onClick={() => deleteItem(text)}
+                onClick={() => editItem(text)}
             >
-                <FaRegWindowClose color={completed ? '#f77' : 'gray'}/>
+                <FaRegEdit className='icon--edit' />
+            </span>
+            <span
+                onClick={() => deleteItem(text)}
+                style={{ marginLeft: '10px' }}
+            >
+                <FaRegWindowClose className='icon--delete'/>
             </span>
       </li>
     );

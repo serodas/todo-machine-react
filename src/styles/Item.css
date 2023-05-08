@@ -21,7 +21,14 @@
     text-decoration: line-through;
 }
 
-.Item:hover {
-    background-color: #0f3942;
-    color: #61DAFA;
+.icon--completed:hover {
+    color: #47c27a
+}
+
+.icon--delete:hover {
+    color: #f77;
+}
+
+.icon--edit:hover {
+    color: #0093d3;;
 }
