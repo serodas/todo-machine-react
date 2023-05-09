@@ -2,8 +2,7 @@ import React from 'react';
 import { FaCheck, FaRegWindowClose, FaRegEdit } from 'react-icons/fa';
 import '../styles/Item.css';
 
-const Item = ({items, saveItemsLocalStorage, id, text, completed }) => {
-
+const Item = ({items, saveItemsLocalStorage, id, text, completed, onEdit }) => {
     const toggleCompleteItem = (id) => {
         const newItems = [...items];
         const indexItem = newItems.findIndex((item) => item.id === id);
@@ -16,10 +15,6 @@ const Item = ({items, saveItemsLocalStorage, id, text, completed }) => {
         const indexItem = cloneItems.findIndex((item) => item.id === id);
         cloneItems.splice(indexItem, 1);
         saveItemsLocalStorage(cloneItems);
-    };
-
-    const editItem = (id) => {
-        console.log('editItem', id);
     };
 
     return (
@@ -35,7 +30,7 @@ const Item = ({items, saveItemsLocalStorage, id, text, completed }) => {
                 {text}
             </p>
             <span
-                onClick={() => editItem(id)}
+                onClick={onEdit}
             >
                 <FaRegEdit className='icon--edit' />
             </span>

@@ -1,14 +1,11 @@
 import React from 'react';
 import '../styles/CreateButton.css';
 
-const CreateButton = ({setOpenModal}) => {
-    const handleClick = () => {
-        setOpenModal(prevState => !prevState);
-    };
+const CreateButton = (props) => {
     return (
         <button 
             className="CreateButton"
-            onClick={handleClick}
+            onClick={props.onClick}
         >+</button>
     );
 }

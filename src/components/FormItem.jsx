@@ -1,23 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Form.css';
 
-const Form = ({ items, saveItemsLocalStorage, setOpenModal }) => {
-    const [ newItemValue, setNewItemValue] = React.useState('');
+const FormItem = (props) => {
+    const [ newItemValue, setNewItemValue] = React.useState(props.defaultText || '');
+
+    const navigate = useNavigate();
 
     const onSubmit = (event) => {
         event.preventDefault();
-        const newItems = [...items];
-        newItems.push({
-            id: Date.now().toString(16),
-            text: newItemValue,
-            completed: false,
-        });
-        saveItemsLocalStorage(newItems);
-        setOpenModal(false);
+        props.submitEvent(newItemValue);
+        navigate('/');
     };
-
+    
     const onCancel = () => {
-        setOpenModal(false);
+        navigate('/');
     };
 
     const onChange = (event) => {
@@ -49,4 +46,4 @@ const Form = ({ items, saveItemsLocalStorage, setOpenModal }) => {
     );
 }
 
-export default Form;
+export default FormItem;

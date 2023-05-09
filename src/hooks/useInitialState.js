@@ -19,9 +19,34 @@ const useInitialState = () => {
         sincronizeItemsLocalStorage,
     } = useLocalStorage('ITEMS', []);
 
+    const addItem = (itemValue) => {
+        const newItems = [...items];
+        newItems.push({
+            id: Date.now().toString(16),
+            text: itemValue,
+            completed: false,
+        });
+        saveItemsLocalStorage(newItems);
+    };
+
+    const editItem = (id, newText) => {
+        const indexItem = items.findIndex(item => item.id === id);
+        const newItems = [...items];
+        newItems[indexItem].text = newText;
+        saveItemsLocalStorage(newItems);
+    };
+
+    const getItem = (id) => {
+        const indexItem = items.findIndex(item => item.id === id);
+        return items[indexItem];
+    };
+
     return {
         items,
         saveItemsLocalStorage,
+        addItem,
+        editItem,
+        getItem,
         loading,
         error,
         searchValue,
