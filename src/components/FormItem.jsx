@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Form.css';
+import '../styles/FormItem.css';
 
 const FormItem = (props) => {
     const [ newItemValue, setNewItemValue] = React.useState(props.defaultText || '');

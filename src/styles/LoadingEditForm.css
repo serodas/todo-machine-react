@@ -1,0 +1,52 @@
+.LoadingEditForm {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+
+.LoadingEditForm__form-container {
+    width: 100%;
+    max-width: 300px;
+    background-color: #002e39;
+    padding: 33px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0;
+}
+
+.LoadingEditForm__text {
+    background-color: #1f434c;
+    border-radius: 2px;
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
+    font-size: 20px;
+    text-align: center;
+    padding: 12px;
+    height: 96px;
+    width: 100%;
+    margin: 0;
+    display: inline-block;
+}
+
+.LoadingEditForm__actions {
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #002e39;
+}
+
+.LoadingEditForm__actions--cancel,
+.LoadingEditForm__actions--success {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 400;
+    width: 120px;
+    height: 48px;
+    border-radius: 2px;
+    border: none;
+    font-family: 'Montserrat';
+    background-color: #1f434c;
+}
