@@ -23,8 +23,8 @@ const FormItem = (props) => {
 
     return (
         <div className='Form_content'>
+            <h2>{props.labelText}</h2>
             <form onSubmit={onSubmit}>
-                <label htmlFor=""></label>
                 <textarea 
                     placeholder="Escribe tu tarea"
                     value={newItemValue}
@@ -39,7 +39,9 @@ const FormItem = (props) => {
                     <button 
                         type='submit'
                         className="Form-button Form-button--add"
-                    >Crear</button>
+                    >
+                        {props.buttonText}
+                    </button>
                 </div>
             </form>
         </div>

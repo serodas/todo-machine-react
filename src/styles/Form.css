@@ -44,6 +44,7 @@ textarea:focus {
 .Form_content {
     display: grid;
     justify-content: center;
+    justify-items: center;
 }
 
 .Form-buttonContainer {

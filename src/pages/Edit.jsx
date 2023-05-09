@@ -19,11 +19,12 @@ const Edit = () => {
         itemText = item.text;
     }
 
-
     return (
         <FormItem
             submitEvent={(text) => editItem(id, text)}
             defaultText={itemText}
+            labelText="Editar tarea"
+            buttonText="Editar"
         />
     );
 }

@@ -6,7 +6,11 @@ const New = () => {
     const { addItem } = useInitialState();
 
     return (
-        <FormItem submitEvent={(text) => addItem(text)}/>
+        <FormItem 
+            submitEvent={(text) => addItem(text)}
+            labelText="Nueva tarea"
+            buttonText="Crear"
+        />
     );
 }
 
