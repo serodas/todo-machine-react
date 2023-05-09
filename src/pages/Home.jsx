@@ -5,7 +5,6 @@ import CreateButton from '../components/CreateButton';
 import Counter from '../components/Counter';
 import Search from '../components/Search';
 import Item from '../components/Item';
-// import Form from '../components/Form';
 import Loading from '../components/Loading';
 import ErrorItem from '../components/ErrorItem';
 import Empty from '../components/Empty';
@@ -41,11 +40,6 @@ const Home = () => {
       });
   }
 
-  const onSearch = (event) => {
-      const onSearchValue = event.currentTarget.value;
-      setSearchValue(onSearchValue);
-  };
-
   return (
     <main className='Home'>
             <Header loading={loading}>
@@ -54,7 +48,7 @@ const Home = () => {
                 totalItemsCompleted={totalItemsCompleted}
               />
               <Search 
-                onSearch={onSearch}
+                setSearchValue={setSearchValue}
               />
             </Header>
             <List
