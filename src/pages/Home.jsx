@@ -20,7 +20,8 @@ const Home = () => {
 
   const { 
     items,
-    saveItemsLocalStorage,
+    completeItem,
+    deleteItem,
     searchValue,
     setSearchValue,
     error,
@@ -67,12 +68,12 @@ const Home = () => {
               onEmpty={() => <Empty />}
               onEmptyResults={(searchText) => <EmptyResults searchText={searchText} />}
               render={(item) => (
-                <Item 
-                  items={items}
-                  saveItemsLocalStorage={saveItemsLocalStorage}
+                <Item
                   id={item.id}
                   text={item.text} 
                   completed={item.completed}
+                  onComplete={completeItem}
+                  onDelete={deleteItem}
                   onEdit={() => navigate(`/edit/${item.id}`,{
                     state: { item }
                   })} 

@@ -41,12 +41,27 @@ const useInitialState = () => {
         return items[indexItem];
     };
 
+    const completeItem = (id) => {
+        const newItems = [...items];
+        const indexItem = newItems.findIndex((item) => item.id === id);
+        newItems[indexItem].completed = !newItems[indexItem].completed;
+        saveItemsLocalStorage(newItems);
+    };
+
+    const deleteItem = (id) => {
+        const newItems = [...items];
+        const indexItem = newItems.findIndex((item) => item.id === id);
+        newItems.splice(indexItem, 1);
+        saveItemsLocalStorage(newItems);
+    };
+
     return {
         items,
-        saveItemsLocalStorage,
         addItem,
         editItem,
         getItem,
+        completeItem,
+        deleteItem,
         loading,
         error,
         searchValue,
